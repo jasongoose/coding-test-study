@@ -3,10 +3,10 @@ function solution(N, stages) {
     const m = new Map();
     
     for (let i=1; i<=N; i++) {
-        const stayN = stages.filter((s) => s === i).length;
-        const clearN = stages.filter((s) => s >= i).length;
-        m.set(i, stayN/clearN);
+        const stayNum = stages.filter((s) => s === i).length;
+        const clearNum = stages.filter((s) => s >= i).length;
+        m.set(i, stayNum/clearNum);
     }
     
-    return Array.from(m).sort((m, n) => n[1] - m[1]).map((v) => v[0]);
+    return Array.from(m).sort((m, n) => n[1] - m[1]).map(([i, v]) => i);
 }
