@@ -1,4 +1,4 @@
-function myStack(size) {
+export function myStack(size) {
   this.status = Array(size).fill(null);
   this.top = -1;
 
