@@ -17,15 +17,3 @@ export function myStack(size) {
   this.isEmpty = () => this.top === -1;
   this.isFull = () => this.top === size - 1;
 }
-
-const s = new myStack(5);
-
-for (let i = 0; i < 5; i++) {
-  s.myPush(i);
-  console.log(s.status, s.top);
-}
-
-for (let i = 5; 0 <= i; i--) {
-  s.myPop();
-  console.log(s.status, s.top);
-}
