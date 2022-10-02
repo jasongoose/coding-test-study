@@ -1,6 +1,7 @@
 export function myQueue(size) {
   if (size <= 1) throw Error("oversized");
   const l = size + 1;
+
   this.status = Array(l).fill(null);
   this.front = 0;
   this.rear = 0;
