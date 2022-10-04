@@ -14,8 +14,9 @@ function solution(bridge_length, weight, truck_weights) {
       cnt++;
       sum += truck_weights[i];
     } else {
+      // 현재 로직에서 큐를 사용하는 이유를 잘 모르겠네요. 큐에 트럭의 무게를 넣는것만 있고, 빼서 계산하는 작업이 빠진것 같습니다.
       ans += bridge_length + cnt - 1;
-      while (!q.isEmpty()) {
+      while (!q.isEmpty()) { // 
         q.remove();
       }
       cnt = 1;
