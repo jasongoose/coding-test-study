@@ -1,18 +1,14 @@
-function combination(arr, target, depth = 0, idx = 0, pick = Array(target).fill(null)) {
-    if (depth === target) {
-        console.log(pick.slice()); // 참고로 비동기적으로 수행됨
+// 조합은 순열과 다르게 순서가 중요하지 않고 선택하는 경우의 수를 따지는 것이 목적이다.
+// 현재 index에서 하나 고를 때마다 누적된 조합을 저장하는 별도의 배열이 필요하다.
+// index 오름차순으로 골라야 중복을 방지할 수 있다.
+function combination(ans, arr, target = arr.length, fillIdx = 0, acc = []) {
+    if (acc.length === target) {
+        ans.push([...acc]);
         return;
     }
-    
-    for (let i = idx,  { length } = arr; i < length; i++) {
-        pick[depth] = arr[i];
-        combination(arr, target, depth + 1, i + 1, pick);
+    for (let i = fillIdx, { length } = arr; i < length; i++) {
+        acc.push(arr[i]);
+        combination(ans, arr, target, i + 1, acc);
+        acc.pop();
     }
 }
-
-combination([1,2,3,4], 2);
-// pick : 현재까지 생성한 조합
-// target : 뽑을 요소의 개수
-// depth : 다음에 선택할 요소의 pos
-// 경우의 수를 구한 뒤에 추가적으로 수행할 작업을 callback으로 전달하는 문제도 있다.
-// 조합은 target이 10 ~ 15라면 시간 초과가 뜰 수도 있다.
